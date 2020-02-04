@@ -83,6 +83,10 @@ groups_filename <- 'D:\\data\\2019_METEC\\results\\groups.csv'
 test99_eventID <- 69
 test99_filename <- events_filename_22
 
+# Write survey stats into padmapper folders
+write_survey_sources <- TRUE
+padmapper_db_folder <- 'D:\\data\\2019_METEC\\padmapper\\padmapper_db'
+
 # read in the reported data, this is needed to clean up sources
 # and un-calibrated data that was measured Thursday 21 November morning
 reported <- read.csv (reported_filename, stringsAsFactors = FALSE)
@@ -226,9 +230,6 @@ for (f in 1:length (events_filenames)) {
 
 # make a new ID column, known as the full tour ID for further indexing, the other ids start at 1 for each day
 q_sources_aggregate$TourID <- 1:nrow (q_sources_aggregate)
-
-
-
 
 # write out an aggregate dataframe
 write.csv (q_sources_aggregate, q_sources_aggregate_filename, row.names = FALSE)
@@ -384,6 +385,16 @@ for (s in 1:nrow (site_stats)) {
         site_stats$groups[s] <- paste (groups, collapse = ' ')
         site_stats$groups_rates[s] <- paste (groups_rates, collapse = ' ')
         site_stats$groups_rates_sds[s] <- paste (groups_rates_sds, collapse = ' ')
+    
+        # 4) Write survey sources into the padmapper folder
+        if (write_survey_sources) {
+            # get site folder and construct new path name
+
+            site_folder <- strsplit (site_stats$Directory[s], '\\\\')[[1]][2]
+            print (site_folder)
+            survey_sources_filename <- paste (padmapper_db_folder, site_folder, 'settled_sources.csv', sep = '\\')
+            write.csv (survey_sources, survey_sources_filename, row.names = F)
+        }
     }
     print (paste ('completed', site_stats$Name[s]))
 }
