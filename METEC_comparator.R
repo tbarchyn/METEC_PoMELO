@@ -23,7 +23,7 @@
 # METEC comparator: this contains the function(s) and logic required to compare reported results
 # to real results on either an equipment group or equipment scale.
 
-source ('D:\\data\\2019_METEC\\results\\METEC_equipment_groups.R')
+source ('D:\\dev\\METEC_PoMELO\\METEC_equipment_groups.R')
 source ('D:\\dev\\R_utilities\\sd_quadrature.R')
 
 equipment_comparator <- function (reported, reported_rates, emitting, emitting_rates, emitting_rates_sd, EP_pad) {

@@ -30,9 +30,9 @@
 
 source ('D:\\dev\\R_utilities\\unit_conversions.R')
 source ('D:\\dev\\R_utilities\\sd_quadrature.R')
-source ('D:\\data\\2019_METEC\\results\\METEC_equipment_groups.R')
-source ('D:\\data\\2019_METEC\\results\\METEC_comparator.R')
-source ('D:\\data\\2019_METEC\\results\\METEC_replication_repairs.R')
+source ('D:\\dev\\METEC_PoMELO\\METEC_equipment_groups.R')
+source ('D:\\dev\\METEC_PoMELO\\METEC_comparator.R')
+source ('D:\\dev\\METEC_PoMELO\\METEC_replication_repairs.R')
 
 ############################################################################################
 # SETUP
